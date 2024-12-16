@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Models\VaccineCenter;
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterUserRequest extends FormRequest
+class ZapierRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +22,11 @@ class RegisterUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:30',
-            'phone' => 'required|string',
-            'email' => 'required|email',
-            'nid' => 'required|string',
-            'center_id' => 'required|integer',
+            '37512542' => 'required', // name
+            '298277c3' => 'required', // phone
+            '06561fc6' => 'required', // email
+            '69ee3849' => 'required', // nid
+            '2695ab78' => 'required', // center_id
         ];
     }
 }

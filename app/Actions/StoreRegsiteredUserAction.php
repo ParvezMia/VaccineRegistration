@@ -8,6 +8,8 @@ class StoreRegsiteredUserAction
 {
     public function store($validate)
     {
+        
+
        return RegisteredUser::create([
             'name'=> $validate['name'],
             'email'=> $validate['email'],
