@@ -8,11 +8,18 @@ use App\Models\VaccineCenter;
 use App\Models\RegisteredUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\Cache\Store;
+use App\Actions\StoreRegsiteredUserAction;
 use App\Http\Requests\RegisterUserRequest;
 use App\Http\Requests\Public\RegisterRequest;
 
 class RegisterController extends Controller
 {
+    private $storeRegsiteredUserAction;   
+    public function __construct(StoreRegsiteredUserAction $storeRegsiteredUserAction)
+    {
+        $this->storeRegsiteredUserAction = $storeRegsiteredUserAction;
+    }
     public function index()
     {
         return view('auth.register',['centers'=> VaccineCenter::all()]);
@@ -20,15 +27,7 @@ class RegisterController extends Controller
     public function store(RegisterUserRequest $request): \Illuminate\Http\RedirectResponse
     {
         $validate = $request->validated();
-
-        RegisteredUser::create([
-            'name'=> $validate['name'],
-            'email'=> $validate['email'],
-            'phone'=> $validate['phone'],
-            'nid'=> $validate['nid'],
-            'vaccine_center_id'=> $validate['center_id'],
-        ]);
-
+        $this->storeRegsiteredUserAction->store($validate);
         flash()->success('You have successfully Register. Rest will send to your mailbox');
         return to_route('register');
     }
