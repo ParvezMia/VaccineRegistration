@@ -25,7 +25,6 @@ class RegisterUserRequest extends FormRequest
             'name' => 'required|string|max:30',
             'phone' => 'required|string',
             'email' => 'required|email',
-            'password' => 'required|string',
             'nid' => 'required|string',
             'center_id' => 'required|integer',
         ];

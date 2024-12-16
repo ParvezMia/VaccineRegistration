@@ -35,15 +35,6 @@
                 @error('email')
                     <div class="text-red-500">{{ $message }}</div>
                 @enderror
-                <!-- Password -->
-                <div class="mb-4">
-                    <label for="password" class="block text-gray-600 text-sm font-medium mb-2">Password <span
-                            class="text-red-500">*</span></label>
-                    <input type="password" id="password" name="password" class="w-full border p-2 rounded">
-                </div>
-                @error('password')
-                    <div class="text-red-500">{{ $message }}</div>
-                @enderror
                 <!-- Phone -->
                 <div class="mb-4">
                     <label for="phone" class="block text-gray-600 text-sm font-medium mb-2">Phone <span

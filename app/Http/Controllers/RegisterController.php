@@ -17,14 +17,13 @@ class RegisterController extends Controller
     {
         return view('auth.register',['centers'=> VaccineCenter::all()]);
     }
-    public function store(RegisterUserRequest $request)
+    public function store(RegisterUserRequest $request): \Illuminate\Http\RedirectResponse
     {
         $validate = $request->validated();
 
         RegisteredUser::create([
             'name'=> $validate['name'],
             'email'=> $validate['email'],
-            'password'=> Hash::make($validate['password']),
             'phone'=> $validate['phone'],
             'nid'=> $validate['nid'],
             'vaccine_center_id'=> $validate['center_id'],
@@ -34,3 +33,5 @@ class RegisterController extends Controller
         return to_route('register');
     }
 }
+
+
