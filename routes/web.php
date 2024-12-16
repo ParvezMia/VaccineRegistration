@@ -3,9 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[RegisterController::class, 'index']);
 
 
 Route::middleware('guest')->group(function () {
